@@ -1,0 +1,16 @@
+---
+logo: "assets/logo.png"
+badge: "NeurIPS 2026 Workshop"
+title: "On-Device Intelligence:"
+title_em: "Foundation Models under Real-World Constraints"
+subtitle: "Connecting language, multimodal, and embodied AI communities around shared device-side constraints — across theory, algorithms, systems, and evaluation."
+date: "December 2026"
+venue: "Sydney / Paris / Atlanta"
+venue_note: "(location TBC)"
+# attendees: "~200 expected attendees"
+cta_primary_text: "Submit on OpenReview"
+cta_primary_url: "https://openreview.net"
+cta_secondary_text: "About the Workshop"
+cta_secondary_url: "#about"
+tagline: "Beyond the cloud, into the world."
+---
