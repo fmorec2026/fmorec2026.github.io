@@ -32,15 +32,21 @@ organizers:
     url: "https://sites.google.com/view/mmuehlebach/"
     photo: "assets/organizers/michael_muehlebach.png"
 
-  - name: "Melanie Zeilinger"
-    initials: "MZ"
-    role: "ETH Zurich"
-    url: "https://scholar.google.com/citations?user=BSf9OLAAAAAJ&hl=en"
-    photo: "assets/organizers/melanie_zeilinger.jpg"
-
   - name: "Daniela Rus"
     initials: "DR"
     role: "MIT"
     url: "https://scholar.google.com/citations?user=910z20QAAAAJ&hl=en"
     photo: "assets/organizers/daniela_rus.jpg"
+
+  - name: "Marko Zarić"
+    initials: "MZ"
+    role: "MPI for Intelligent Systems"
+    url: "https://markozaric.com/"
+    photo: "assets/organizers/marko_zaric.jpg"
+
+  - name: "Melanie Zeilinger"
+    initials: "MZ"
+    role: "ETH Zurich"
+    url: "https://scholar.google.com/citations?user=BSf9OLAAAAAJ&hl=en"
+    photo: "assets/organizers/melanie_zeilinger.jpg"
 ---
