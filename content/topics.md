@@ -1,6 +1,6 @@
 ---
 title: "Topics & Call for Papers"
-intro: "We invite short paper submissions (**4 pages**, excluding references) using the [NeurIPS 2026 LaTeX template](https://neurips.cc/Conferences/2026/PaperInformation/StyleFiles), on all topics listed below but not limited to them."
+intro: "We invite short paper submissions (**5 pages**, excluding references) using the [NeurIPS 2026 LaTeX template](https://neurips.cc/Conferences/2026/PaperInformation/StyleFiles), on all topics listed below but not limited to them."
 
 topics:
   - title: "Device-Native Foundation Model Design"
