@@ -16,7 +16,7 @@ organizers:
 
   - name: "Shiwei Liu"
     initials: "SL"
-    role: "MPI for Intelligent Systems"
+    role: "ELLIS Institute Tübingen, MPI for Intelligent Systems, and Tübingen AI Center"
     url: "https://shiweiliuiiiiiii.github.io/"
     photo: "assets/organizers/shiwei_liu.jpeg"
 

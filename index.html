@@ -273,13 +273,27 @@ function renderTopics(fm) {
       <span class="topic-num">${String(i+1).padStart(2,'0')}</span>
       <div class="topic-body"><h4>${e(t.title)}</h4><p>${e(t.description)}</p></div>
     </li>`);
-  const intro = fm.intro ? `<p>${e(fm.intro)}</p>` : '';
+  const intro = fm.intro ? `<p style="margin-bottom:1rem;">${marked.parseInline(fm.intro)}</p>` : '';
+  const tracks = (fm.tracks||[]).map(t => `<li>${marked.parseInline(t)}</li>`).join('');
+  const tracksNote = fm.tracks_note ? `<p style="margin-top:.75rem;font-size:14px;color:var(--muted);">${marked.parseInline(fm.tracks_note)}</p>` : '';
+  const deadlines = (fm.submission_deadline || fm.notification_date) ? `
+    <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.5rem 2rem;font-size:14px;color:var(--muted);">
+      ${fm.submission_deadline ? `<span><strong style="color:var(--text);">Submission deadline:</strong> ${e(fm.submission_deadline)}</span>` : ''}
+      ${fm.notification_date ? `<span><strong style="color:var(--text);">Notification:</strong> ${e(fm.notification_date)}</span>` : ''}
+    </div>` : '';
+  const conflictNote = fm.conflict_note ? `<p style="margin-top:1rem;font-size:13px;color:var(--light);">${e(fm.conflict_note)}</p>` : '';
+  const submitBtn = fm.openreview_url ? `<div style="margin-top:1.5rem;"><a href="${e(fm.openreview_url)}" class="btn btn-primary" target="_blank" rel="noopener">${e(fm.openreview_label)}</a></div>` : '';
   return `
 <section id="topics">
   <div class="section-inner">
     <h2>${e(fm.title)}</h2>
     ${intro}
-    <ul class="topics-list">${items.join('')}</ul>
+    <ul style="padding-left:1.3rem;color:var(--muted);font-size:14.5px;margin-bottom:.5rem;">${tracks}</ul>
+    ${tracksNote}
+    <ul class="topics-list" style="margin-top:2rem;">${items.join('')}</ul>
+    ${deadlines}
+    ${submitBtn}
+    ${conflictNote}
   </div>
 </section>`;
 }
@@ -407,7 +421,6 @@ async function main() {
     ['about.md',      null],
     ['topics.md',     null],
     ['speakers.md',   null],
-    ['submit.md',     null],
     ['dates.md',      null],
     ['organizers.md', null],
     ['contact.md',    null],
@@ -415,7 +428,7 @@ async function main() {
 
   const loaded = await Promise.all(files.map(([f]) => load(f)));
 
-  const [hero, about, topics, speakers, submit, dates, organizers, contact] = loaded;
+  const [hero, about, topics, speakers, dates, organizers, contact] = loaded;
 
   // Build nav
   const logoHtml = hero.fm.logo
@@ -423,9 +436,8 @@ async function main() {
     : '';
   document.getElementById('nav-links').innerHTML = logoHtml + `
     <a href="#about">About</a>
-    <a href="#topics">Topics</a>
+    <a href="#topics">Topics & CFP</a>
     <a href="#speakers">Keynote Speakers</a>
-    <a href="#submit">Call for Papers</a>
     <a href="#dates">Important Dates</a>
     <a href="#organizers">Organizers</a>
     <a href="#contact">Contact</a>`;
@@ -436,7 +448,6 @@ async function main() {
     renderAbout(about.fm, about.body),
     renderTopics(topics.fm),
     renderSpeakers(speakers.fm),
-    renderSubmit(submit.fm, submit.body),
     renderDates(dates.fm),
     renderOrganizers(organizers.fm),
     renderContact(contact.fm, contact.body),

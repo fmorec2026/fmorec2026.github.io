@@ -1,20 +1,27 @@
 ---
-title: "Workshop Topics"
-intro: "The workshop aims to promote discussion and progress on the following problems, but is not limited to them."
+title: "Topics & Call for Papers"
+intro: "We invite short paper submissions (**4 pages**, excluding references) using the [NeurIPS 2026 LaTeX template](https://neurips.cc/Conferences/2026/PaperInformation/StyleFiles), on all topics listed below but not limited to them."
 
 topics:
-  - title: "On-Device Foundation Models & Efficient Adaptation"
-    description: "Compression, quantization, distillation, sparsity, personalization, and continual adaptation under constraints on compute, memory, bandwidth, and energy."
+  - title: "Device-Native Foundation Model Design"
+    description: "Architectures, compression, quantization, distillation, and sparsity methods tailored for deployment under strict compute, memory, bandwidth, and energy constraints."
 
-  - title: "Systems, Deployment & Hardware-Software Co-design"
-    description: "Runtimes, compilers, deployment toolchains, and co-design strategies across mobile devices, wearables, robots, autonomous platforms, and other edge systems."
+  - title: "Efficient Adaptation, Inference and Reasoning under Real-World Constraints"
+    description: "Personalization, continual adaptation, and inference optimization strategies that operate reliably under the resource budgets of mobile, edge, and embedded systems."
 
-  - title: "Interactive Language & Multimodal Intelligence On Device"
-    description: "Low-latency response, local privacy, personalized memory, on-device retrieval and tool use, and robust operation under offline or weak-connectivity settings."
+  - title: "Real-Time Multimodal and Embodied Intelligence"
+    description: "Low-latency perception, decision-making, and tool use for vision-language-action models, robotics, and autonomous systems operating directly on device."
 
-  - title: "Embodied & Agentic Intelligence On Device"
-    description: "Real-time perception, decision-making, adaptation, safe execution, and reliable operation for VLAs, robotics, and autonomous driving directly on device."
+  - title: "Reliable, Safe, and Private Local Execution"
+    description: "Safety and privacy-preserving techniques for on-device models operating in offline or weak-connectivity settings."
 
-  - title: "Safety, Privacy, Reliability & Evaluation"
-    description: "Evaluation frameworks and benchmarks for jointly assessing performance, latency, energy, memory, safety, and reliability under realistic deployment conditions."
+  - title: "Benchmarks and Evaluation for Interactive Real-World Deployment"
+    description: "Benchmarks and metrics that jointly assess performance, latency, energy, memory, safety, and reliability under realistic deployment conditions."
+
+tracks_note: "This workshop is *non-archival* and follows a double-blind review process. Outstanding submissions will be invited for a 15-minute oral presentation. All accepted papers will be presented during the poster session."
+
+openreview_url: "https://openreview.net"
+openreview_label: "Submit on OpenReview"
+submission_deadline: "August 29, 2026, AoE"
+notification_date: "September 29, 2026, AoE"
 ---
