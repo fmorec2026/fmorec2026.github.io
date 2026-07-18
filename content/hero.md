@@ -1,5 +1,6 @@
 ---
-logo: "assets/logo.png"
+nav_logo: "assets/odi_logo_abbr_tagline_white.png"
+background: "assets/background.png"
 badge: "NeurIPS 2026 Workshop"
 title: "On-Device Intelligence:"
 title_em: "Foundation Models under Real-World Constraints"

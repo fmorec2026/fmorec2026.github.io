@@ -30,10 +30,10 @@ nav a:hover { color: var(--accent); }
 nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
 
 /* HERO */
-#hero { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 5rem 1.5rem 4rem; text-align: center; }
+#hero { background: var(--bg2); background-size: cover; background-position: 80% 80%; background-repeat: no-repeat; border-bottom: 1px solid var(--border); padding: 5rem 1.5rem 4rem; text-align: center; }
 .hero-inner { max-width: var(--max); margin: 0 auto; }
 .hero-tag { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: .3rem .85rem; border-radius: 100px; margin-bottom: 1.5rem; }
-#hero h1 { font-family: 'IBM Plex Serif', serif; font-size: clamp(1.9rem,4.5vw,3rem); font-weight: 600; line-height: 1.2; margin-bottom: .5rem; }
+#hero h1 { font-family: 'IBM Plex Serif', serif; font-size: clamp(1.5rem,3.2vw,2.2rem); font-weight: 600; line-height: 1.2; margin-bottom: .5rem; }
 #hero h1 em { font-style: italic; color: var(--accent); }
 .hero-sub { font-size: 1.05rem; color: var(--muted); margin-top: 1rem; max-width: 640px; margin-left: auto; margin-right: auto; }
 .hero-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.4rem; margin-top: 2rem; font-size: 15px; color: var(--muted); }
@@ -183,19 +183,19 @@ function renderHero(fm) {
   const logoBlock = fm.logo
     ? `<div class="hero-logo"><img src="${e(fm.logo)}" alt="Workshop logo"></div>`
     : '';
+  const bgStyle = fm.background ? ` style="background-image:url('${e(fm.background)}');"` : '';
   return `
-<div id="hero">
+<div id="hero"${bgStyle}>
   <div class="hero-inner">
     ${logoBlock}
-    <div class="hero-tag">${e(fm.badge)}</div>
-    <h1>${e(fm.title)}<br><em>${e(fm.title_em)}</em></h1>
+    <h1><span style="font-size:1.25em;">${e(fm.title)}</span><br><em>${e(fm.title_em)}</em></h1>
     <p class="hero-sub">${e(fm.subtitle)}</p>
     <div class="hero-meta">
+      <span><strong>${e(fm.badge)}</strong></span>
+      <span class="hero-meta-sep">·</span>
       <span><strong>${e(fm.date)}</strong></span>
       <span class="hero-meta-sep">·</span>
-      <span>${e(fm.venue)} <span style="color:var(--light);font-size:13px;">${e(fm.venue_note)}</span></span>
-      <span class="hero-meta-sep">·</span>
-      <span>${e(fm.attendees)}</span>
+      <span><strong>${e(fm.venue)}</strong></span>
     </div>
     <div class="hero-links">
       <a href="${e(fm.cta_primary_url)}" class="btn btn-primary" target="_blank" rel="noopener">${e(fm.cta_primary_text)}</a>
@@ -431,8 +431,8 @@ async function main() {
   const [hero, about, topics, speakers, dates, organizers, contact] = loaded;
 
   // Build nav
-  const logoHtml = hero.fm.logo
-    ? `<a href="#" class="nav-logo"><img src="${e(hero.fm.logo)}" alt="Workshop logo"></a>`
+  const logoHtml = (hero.fm.nav_logo || hero.fm.logo)
+    ? `<a href="#" class="nav-logo"><img src="${e(hero.fm.nav_logo || hero.fm.logo)}" alt="Workshop logo"></a>`
     : '';
   document.getElementById('nav-links').innerHTML = logoHtml + `
     <a href="#about">About</a>
