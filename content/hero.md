@@ -1,5 +1,5 @@
 ---
-nav_logo: "assets/odi_logo_abbr_tagline_white.png"
+nav_logo: "assets/odi_logo_abbr_no_tagline_transparent.png"
 background: "assets/background.png"
 badge: "NeurIPS 2026 Workshop"
 title: "On-Device Intelligence:"

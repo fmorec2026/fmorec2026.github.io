@@ -78,24 +78,16 @@ def render_schedule(fm, _body):
                        f'<span class="{cls}">{e(item.get("label",""))}</span></div>')
         return "\n".join(out)
 
-    morning_html   = rows(fm.get('morning', []))
-    afternoon_html = rows(fm.get('afternoon', []))
+    schedule_html  = rows([*(fm.get('morning', []) or []), *(fm.get('afternoon', []) or [])])
+    description    = fm.get('description', '')
     note           = fm.get('note', '')
 
     return f"""
 <section id="schedule">
   <div class="section-inner">
     <h2>{e(fm.get('title','Schedule'))}</h2>
-    <div class="schedule-cols">
-      <div class="schedule-half">
-        <h3>Morning</h3>
-        {morning_html}
-      </div>
-      <div class="schedule-half">
-        <h3>Afternoon</h3>
-        {afternoon_html}
-      </div>
-    </div>
+    {'<p class="section-lead">' + e(description) + '</p>' if description else ''}
+    <div class="schedule-list">{schedule_html}</div>
     {'<p style="margin-top:1.5rem;font-size:13.5px;color:var(--light);">' + e(note) + '</p>' if note else ''}
   </div>
 </section>"""
@@ -288,7 +280,7 @@ nav a:first-child { padding-left: 0; }
 nav a:hover { color: var(--accent); }
 nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
 #hero {
-  background: var(--bg2); border-bottom: 1px solid var(--border);
+  background: var(--bg2); background-size: cover; background-position: 58% 80%; background-repeat: no-repeat; border-bottom: 1px solid var(--border);
   padding: 5rem 1.5rem 4rem; text-align: center;
 }
 .hero-inner { max-width: var(--max); margin: 0 auto; }
@@ -302,7 +294,7 @@ nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
   font-weight: 600; line-height: 1.2; margin-bottom: .5rem;
 }
 #hero h1 em { font-style: italic; color: var(--accent); }
-.hero-sub { font-size: 1.05rem; color: var(--muted); margin-top: 1rem; max-width: 640px; margin-left: auto; margin-right: auto; }
+.hero-sub { font-size: 1.22rem; font-weight: 600; color: var(--muted); margin-top: 1rem; max-width: 640px; margin-left: auto; margin-right: auto; }
 .hero-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.4rem; margin-top: 2rem; font-size: 15px; color: var(--muted); }
 .hero-meta strong { color: var(--text); font-weight: 500; }
 .hero-meta-sep { color: var(--border); }
@@ -326,6 +318,7 @@ section h2 {
   font-weight: 600; color: var(--text); margin-bottom: 1.5rem;
 }
 section p { color: var(--muted); margin-bottom: 1rem; }
+.section-lead { max-width: 720px; font-size: 15px; line-height: 1.65; }
 section p:last-child { margin-bottom: 0; }
 section ul, section ol { color: var(--muted); padding-left: 1.4rem; margin-bottom: 1rem; }
 section li { margin-bottom: .3rem; }
@@ -334,6 +327,7 @@ section em { font-style: italic; }
 section a { color: var(--link); }
 #about, #speakers, #submit, #organizers, #contact { background: var(--bg); }
 #schedule, #topics, #dates { background: var(--bg2); }
+.schedule-list { max-width: 720px; margin-top: .5rem; }
 .schedule-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: .5rem; }
 .schedule-half h3 {
   font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
@@ -428,6 +422,7 @@ footer a:hover { color: #fff; }
   border-left: 2px solid var(--accent);
 }
 @media (max-width: 640px) {
+  #hero { background-position: 44% 92%; }
   .schedule-cols { grid-template-columns: 1fr; }
   .sched-time { min-width: 84px; font-size: 11.5px; }
   .org-grid { grid-template-columns: 1fr; }
@@ -457,6 +452,7 @@ def build():
         ("about.md",       render_about),
         ("topics.md",      render_topics),
         ("speakers.md",    render_speakers),
+        ("schedule.md",    render_schedule),
         ("submit.md",      render_submit),
         ("dates.md",       render_dates),
         ("organizers.md",  render_organizers),
@@ -471,6 +467,7 @@ def build():
         '<a href="#about">About</a>',
         '<a href="#topics">Topics</a>',
         '<a href="#speakers">Keynote Speakers</a>',
+        '<a href="#schedule">Schedule</a>',
         '<a href="#submit">Call for Papers</a>',
         '<a href="#dates">Important Dates</a>',
         '<a href="#organizers">Organizers</a>',
