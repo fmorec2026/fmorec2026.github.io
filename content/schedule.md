@@ -1,5 +1,6 @@
 ---
 title: "Workshop Schedule"
+description: "This is a tentative schedule. A more detailed program will be announced later."
 note: "Keynote talks: 20 min + 10 min Q&A · Contributed talks: 15 min + 5 min Q&A · Two poster sessions of 1 hour each."
 
 morning:

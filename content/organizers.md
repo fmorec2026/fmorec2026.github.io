@@ -24,7 +24,7 @@ organizers:
     initials: "HM"
     role: "ETH Zurich"
     url: "https://haomafrlu.github.io/"
-    photo: "assets/organizers/hao_ma.jpg"
+    photo: "assets/organizers/hao_ma_ai_restored_cheek_reduced_v3_hair_fixed_sharp_640.jpg"
 
   - name: "Michael Muehlebach"
     initials: "MM"
